@@ -1,0 +1,32 @@
+aid: quote-garden
+name: Quote Garden
+description: "REST API for more than 5000 famous quotes"
+url: https://pprathameshmore.github.io/QuoteGarden/
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Personality"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Personality
+  - Public APIs
+apis:
+  - name: Quote Garden
+    description: "REST API for more than 5000 famous quotes"
+    humanURL: https://pprathameshmore.github.io/QuoteGarden/
+    baseURL: https://pprathameshmore.github.io/QuoteGarden/
+    tags:
+      - Personality
+    properties:
+      - type: Documentation
+        url: https://pprathameshmore.github.io/QuoteGarden/
+common:
+  - type: Website
+    url: https://pprathameshmore.github.io/QuoteGarden/
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
