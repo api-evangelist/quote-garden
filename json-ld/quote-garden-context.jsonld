@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "qg": "https://github.com/api-evangelist/quote-garden/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Quote": "schema:Quotation",
+    "Author": "schema:Person",
+    "Genre": "schema:DefinedTerm",
+
+    "_id": {
+      "@id": "qg:id",
+      "@type": "xsd:string"
+    },
+    "quoteText": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+    "quoteAuthor": {
+      "@id": "schema:creator",
+      "@type": "@id"
+    },
+    "quoteGenre": {
+      "@id": "schema:genre",
+      "@type": "xsd:string"
+    },
+
+    "statusCode": {
+      "@id": "qg:statusCode",
+      "@type": "xsd:integer"
+    },
+    "message": {
+      "@id": "qg:message",
+      "@type": "xsd:string"
+    },
+    "pagination": {
+      "@id": "qg:pagination",
+      "@type": "@id"
+    },
+    "currentPage": {
+      "@id": "qg:currentPage",
+      "@type": "xsd:integer"
+    },
+    "nextPage": {
+      "@id": "qg:nextPage",
+      "@type": "xsd:integer"
+    },
+    "totalPages": {
+      "@id": "qg:totalPages",
+      "@type": "xsd:integer"
+    },
+    "totalQuotes": {
+      "@id": "qg:totalQuotes",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "qg:data",
+      "@container": "@set"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+extends:
+  - spectral:oas
+
+documentationUrl: https://github.com/api-evangelist/quote-garden
+
+functions: []
+
+rules:
+  # === Quote Garden conventions ===
+
+  quote-garden-operation-id-camelcase:
+    description: Operation IDs must be lowerCamelCase, mirroring Quote Garden's controller exports (e.g., getRandomQuotes, getAllQuotes, getAllAuthors).
+    message: '{{property}} should be lowerCamelCase'
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+
+  quote-garden-operation-summary-title-case:
+    description: Every operation summary in the Quote Garden API must use Title Case.
+    message: '{{property}} should be in Title Case (e.g., "Get Random Quote")'
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-zA-Z0-9]*)(\s(A|An|And|At|But|By|For|In|Of|On|Or|The|To|With|[A-Z][a-zA-Z0-9]*))*$'
+
+  quote-garden-tag-known-values:
+    description: Operations must be tagged with one of the three canonical Quote Garden resource tags.
+    message: 'Tag must be one of: Quotes, Authors, Genres'
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Quotes
+          - Authors
+          - Genres
+
+  quote-garden-response-envelope-required:
+    description: Every 200 application/json response must reference one of the Quote Garden envelope schemas (QuotesResponse, StringListResponse, ResponseEnvelope).
+    message: 'Response should reference a Quote Garden envelope schema'
+    severity: warn
+    given: $.paths.*[get].responses.200.content['application/json'].schema
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - type: object
+              required: ['$ref']
+              properties:
+                $ref:
+                  type: string
+                  pattern: '.*(QuotesResponse|StringListResponse|ResponseEnvelope).*'
+            - type: object
+              required: ['allOf']
+
+  quote-garden-base-path-versioned:
+    description: All servers must be versioned under /api/v3 — older versions are deprecated.
+    message: 'Server URL should end with /api/v3'
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '.*/api/v3$'
+
+  quote-garden-no-write-methods:
+    description: Quote Garden is a read-only API; only GET operations are permitted.
+    message: 'Only GET operations are allowed in the Quote Garden API'
+    severity: error
+    given: $.paths.*
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        notMatch: '^(post|put|patch|delete)$'
+
+  quote-garden-pagination-parameters:
+    description: List endpoints that support pagination should expose `page` and `limit` query parameters.
+    message: 'Listing endpoints should include page and limit parameters'
+    severity: info
+    given: $.paths[/quotes,/authors,/genres].get.parameters
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              name:
+                enum: [page, limit]
+
+  quote-garden-license-mit:
+    description: The OpenAPI info.license should be MIT, matching the upstream project.
+    message: 'license should be MIT'
+    severity: warn
+    given: $.info.license.name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^MIT$'
+
+  quote-garden-contact-required:
+    description: info.contact must point back to the canonical GitHub project.
+    severity: warn
+    given: $.info.contact
+    then:
+      function: truthy

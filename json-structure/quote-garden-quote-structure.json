@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/draft/0.1/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-quote-structure.json",
+  "title": "Quote",
+  "type": "object",
+  "description": "Structural layout of the Quote resource served by the Quote Garden API.",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "MongoDB ObjectId (24-char hex string)."
+    },
+    "quoteText": {
+      "type": "string",
+      "description": "The quote text."
+    },
+    "quoteAuthor": {
+      "type": "string",
+      "description": "Quote author."
+    },
+    "quoteGenre": {
+      "type": "string",
+      "description": "Genre tag."
+    },
+    "__v": {
+      "type": "integer",
+      "description": "Mongoose schema version."
+    }
+  },
+  "required": ["_id", "quoteText", "quoteAuthor", "quoteGenre"]
+}

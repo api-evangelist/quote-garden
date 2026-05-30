@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-response-envelope-schema.json",
+  "title": "ResponseEnvelope",
+  "description": "Common response envelope returned by every Quote Garden v3 endpoint.",
+  "type": "object",
+  "required": ["statusCode", "message", "pagination", "data"],
+  "properties": {
+    "statusCode": {
+      "type": "integer",
+      "description": "HTTP status code mirror.",
+      "example": 200
+    },
+    "message": {
+      "type": "string",
+      "description": "Short human-readable label describing the response.",
+      "examples": ["Quotes", "Random quotes", "Authors", "Genres"]
+    },
+    "pagination": {
+      "type": "object",
+      "description": "Pagination block. Values may be null on non-paginated endpoints (e.g., /genres, /authors).",
+      "properties": {
+        "currentPage": { "type": ["integer", "null"] },
+        "nextPage": { "type": ["integer", "null"] },
+        "totalPages": { "type": ["integer", "null"] }
+      }
+    },
+    "totalQuotes": {
+      "type": ["integer", "null"],
+      "description": "Total quote count matched by the request (null when not applicable)."
+    },
+    "data": {
+      "type": "array",
+      "description": "Array of resource records or strings (depending on the endpoint).",
+      "items": {
+        "oneOf": [
+          { "$ref": "./quote-garden-quote-schema.json" },
+          { "type": "string" }
+        ]
+      }
+    }
+  }
+}

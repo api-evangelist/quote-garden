@@ -1,0 +1,40 @@
+{
+  "operationId": "listAuthors",
+  "method": "GET",
+  "path": "/authors",
+  "summary": "List Authors",
+  "request": {
+    "url": "https://quote-garden.onrender.com/api/v3/authors?page=1&limit=10",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "statusCode": 200,
+      "message": "Authors",
+      "pagination": {
+        "currentPage": null,
+        "nextPage": null,
+        "totalPages": null
+      },
+      "totalQuotes": null,
+      "data": [
+        "Bill Gates",
+        "Albert Einstein",
+        "Mark Twain",
+        "Maya Angelou",
+        "Mahatma Gandhi",
+        "Oscar Wilde",
+        "Winston Churchill",
+        "Theodore Roosevelt",
+        "Eleanor Roosevelt",
+        "Steve Jobs"
+      ]
+    }
+  }
+}

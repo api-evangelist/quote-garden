@@ -1,32 +1,186 @@
 aid: quote-garden
 name: Quote Garden
-description: "REST API for more than 5000 famous quotes"
-url: https://pprathameshmore.github.io/QuoteGarden/
-specificationVersion: '0.20'
-created: '2026-05-28'
-modified: '2026-05-28'
-x-source: public-apis/public-apis
-x-category: "Personality"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+description: >-
+  Quote Garden is a free, open-source REST API that serves more than 75,000 famous quotes. Built by
+  Prathamesh More (pprathameshmore) in Node.js + Express + MongoDB, it exposes a small read-only HTTP
+  surface for fetching random quotes, paginated quote lists filterable by author, genre, and
+  full-text query, plus master lists of all authors and genres. There is no authentication and no
+  cost to use; the canonical reference implementation is hosted on Render at
+  https://quote-garden.onrender.com/api/v3 and was previously deployed on Heroku at
+  quote-garden.herokuapp.com. The project also ships an official npm client wrapper
+  (`@pprathameshmore/quotegardennpm`) and is widely embedded in third-party chrome extensions, mobile
+  apps, and Twitter bots that need a lightweight inspirational-quote source.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Quotes
+  - Inspiration
+  - Open Source
+  - Free API
+  - Node.js
+  - MongoDB
+  - Express
   - Personality
   - Public APIs
+created: '2026-05-28'
+modified: '2026-05-30'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/apis.yml
+specificationVersion: '0.20'
+x-source: public-apis/public-apis
+x-category: Personality
+x-type: opensource
+x-tier: 3
+x-tier-reason: opensource-thin
 apis:
-  - name: Quote Garden
-    description: "REST API for more than 5000 famous quotes"
+  - aid: quote-garden:quote-garden-api
+    name: Quote Garden REST API
+    description: >-
+      Read-only REST API exposing a database of 75,000+ famous quotes. Returns JSON with a
+      consistent envelope (statusCode, message, pagination, totalQuotes, data). Supports filtering
+      by author, genre, and full-text query, plus pagination via page/limit query parameters. The
+      v3 API is the only supported version; older versions (v1/v2) are deprecated.
     humanURL: https://pprathameshmore.github.io/QuoteGarden/
-    baseURL: https://pprathameshmore.github.io/QuoteGarden/
+    baseURL: https://quote-garden.onrender.com/api/v3
     tags:
-      - Personality
+      - Quotes
+      - REST
+      - Open Source
+      - Free API
     properties:
       - type: Documentation
-        url: https://pprathameshmore.github.io/QuoteGarden/
-common:
-  - type: Website
-    url: https://pprathameshmore.github.io/QuoteGarden/
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+        url: https://github.com/pprathameshmore/QuoteGarden#readme
+      - type: APIReference
+        url: https://github.com/pprathameshmore/QuoteGarden#api-documentation
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/openapi/quote-garden-openapi.yml
+      - type: JSONSchema
+        title: Quote Schema
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-quote-schema.json
+      - type: JSONSchema
+        title: Response Envelope Schema
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-response-envelope-schema.json
+      - type: JSONStructure
+        title: Quote Structure
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-quote-structure.json
+      - type: JSONStructure
+        title: Response Envelope Structure
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-response-envelope-structure.json
+      - type: JSONLD
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-ld/quote-garden-context.jsonld
+      - type: Example
+        title: Get Random Quote Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-get-random-quote-example.json
+      - type: Example
+        title: List Quotes Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-quotes-example.json
+      - type: Example
+        title: List Genres Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-genres-example.json
+      - type: Example
+        title: List Authors Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-authors-example.json
+      - type: Example
+        title: Quote Resource Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-quote-example.json
+      - type: Example
+        title: Response Envelope Example
+        url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-response-envelope-example.json
+      - type: SDK
+        title: QuoteGarden NPM Wrapper
+        url: https://github.com/pprathameshmore/QuoteGardenNPM
+      - type: SDK
+        title: npm Package
+        url: https://www.npmjs.com/package/quotegarden
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+common:
+  - type: Website
+    url: https://pprathameshmore.github.io/QuoteGarden/
+  - type: Portal
+    url: https://pprathameshmore.github.io/QuoteGarden/
+  - type: GitHubRepository
+    url: https://github.com/pprathameshmore/QuoteGarden
+  - type: GitHubOrganization
+    url: https://github.com/pprathameshmore
+  - type: SourceCode
+    url: https://github.com/pprathameshmore/QuoteGarden
+  - type: License
+    title: MIT License
+    url: https://opensource.org/licenses/MIT
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+  - type: SpectralRules
+    url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/rules/quote-garden-rules.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/vocabulary/quote-garden-vocabulary.yml
+  - type: NaftikoCapability
+    title: Quote Garden Capability
+    url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/capabilities/quote-discovery.yaml
+  - type: Features
+    data:
+      - name: 75,000+ Quotes
+        description: Curated MongoDB collection of more than seventy-five thousand famous quotes attributed to a long tail of authors.
+      - name: Random Quote Retrieval
+        description: Single-call endpoint that returns one or more randomly selected quotes, optionally filtered by author, genre, or search query.
+      - name: Paginated Quote Listing
+        description: Page-and-limit paginated access to the full quote corpus with deterministic ordering, suitable for browsing or full-dump use cases.
+      - name: Full-Text Search
+        description: MongoDB text index on quoteText, quoteAuthor, and quoteGenre exposed via the `query` parameter on quote listing endpoints.
+      - name: Author Filter
+        description: Filter quotes by exact author name via the `author` query parameter and discover the full author list via the `/authors` endpoint.
+      - name: Genre Filter
+        description: Filter quotes by genre (e.g., love, life, success, business) via the `genre` query parameter and discover the full genre list via the `/genres` endpoint.
+      - name: No Authentication Required
+        description: Completely open access with no API key, OAuth, or signup; CORS-enabled for direct browser use.
+      - name: Consistent Response Envelope
+        description: Every endpoint returns the same shape (statusCode, message, pagination, totalQuotes, data) for predictable client parsing.
+      - name: NPM Client Wrapper
+        description: Official `quotegarden` npm package wraps the HTTP API for Node.js and browser projects.
+      - name: Open Source MIT License
+        description: Entire backend (Express + MongoDB) and NPM client are MIT-licensed, allowing self-hosting and modification.
+  - type: UseCases
+    data:
+      - name: Inspirational Daily Quote Widgets
+        description: Browser new-tab extensions and home screen widgets call `/quotes/random` to display a fresh inspirational quote on each page load.
+      - name: Chatbot and Voice Assistant Prompts
+        description: Chatbots, Slack bots, and Alexa skills pull random quotes by genre to inject contextual inspiration into conversations.
+      - name: Social Media Automation
+        description: Twitter, Mastodon, and Bluesky bots schedule recurring posts from filtered author or genre slices of the corpus.
+      - name: Educational and Motivational Apps
+        description: Mobile apps for students, athletes, and remote workers surface goal-aligned quotes filtered by genre (success, perseverance, focus).
+      - name: Static Site Generators
+        description: Jamstack sites embed a random quote at build time by hitting the API during the build step.
+      - name: Game and AR Easter Eggs
+        description: Indie games and AR experiences sprinkle randomly fetched quotes into loading screens and reward moments.
+      - name: Email and Newsletter Personalization
+        description: Transactional and marketing email systems append a daily quote to footer templates fetched at send-time.
+      - name: Learning Projects for API Consumption
+        description: Bootcamps and university courses use the unauthenticated API as a teaching example for HTTP, JSON parsing, and pagination.
+  - type: Integrations
+    data:
+      - name: Achieve Chrome Extension
+        description: New-tab Chrome extension by the same author that originally motivated the API; displays a daily quote with imagery.
+      - name: QuoteGarden Android App
+        description: Community-built Android app on Google Play that surfaces Quote Garden quotes on the device.
+      - name: Spontaneous (iOS)
+        description: Independent iOS app published on the App Store that consumes Quote Garden for randomized inspiration.
+      - name: QuoteGarden Twitter Bot
+        description: "@quotegardenbot Twitter bot that publishes scheduled quotes pulled from the API."
+      - name: Bink Chrome Extension
+        description: Third-party Chrome extension by AmitGujar that shows quotes on new-tab.
+      - name: MotivateU
+        description: GitHub open-source project by Shankhanil Ghosh that wraps Quote Garden into a motivational web experience.
+      - name: QuoteGarden NPM
+        description: Official `quotegarden` npm wrapper for JavaScript and TypeScript clients.
+  - type: Solutions
+    data:
+      - name: Self-Hosted Deployment
+        description: Clone the GitHub repo and run via Docker / docker-compose (Dockerfile and Procfile included) against your own MongoDB instance for full control of data and SLAs.
+      - name: Hosted Reference API
+        description: Free public reference deployment at quote-garden.onrender.com/api/v3 — no SLA, intended for hobby and prototype use.
+      - name: NPM SDK Integration
+        description: Drop-in `quotegarden` npm package for Node.js or browser apps that prefer a typed client over raw fetch calls.

@@ -1,0 +1,248 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Quote Garden — Quote Discovery
+  description: >-
+    Self-contained Naftiko capability covering the entire read-only Quote Garden v3 surface:
+    fetch a random quote, page through filtered quote listings, and discover the full author
+    and genre vocabularies. Four GET operations, no authentication, optional author/genre/query
+    filters.
+  tags:
+    - Quote Garden
+    - Quotes
+    - Authors
+    - Genres
+    - Open Source
+    - Free API
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds: []
+capability:
+  consumes:
+    - type: http
+      namespace: quote-garden
+      baseUri: https://quote-garden.onrender.com/api/v3
+      description: Quote Garden v3 REST endpoints. No authentication. CORS-enabled.
+      resources:
+        - name: quotes-random
+          path: /quotes/random
+          operations:
+            - name: getRandomQuote
+              method: GET
+              description: Get Random Quote
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: author
+                  in: query
+                  type: string
+                  description: Filter to quotes by this exact author name.
+                - name: genre
+                  in: query
+                  type: string
+                  description: Filter to quotes tagged with this genre.
+                - name: query
+                  in: query
+                  type: string
+                  description: Full-text search across quoteText, quoteAuthor, and quoteGenre.
+                - name: count
+                  in: query
+                  type: integer
+                  description: Number of random quotes to return (default 1).
+        - name: quotes
+          path: /quotes
+          operations:
+            - name: listQuotes
+              method: GET
+              description: List Quotes
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: author
+                  in: query
+                  type: string
+                - name: genre
+                  in: query
+                  type: string
+                - name: query
+                  in: query
+                  type: string
+                - name: page
+                  in: query
+                  type: integer
+                - name: limit
+                  in: query
+                  type: integer
+        - name: genres
+          path: /genres
+          operations:
+            - name: listGenres
+              method: GET
+              description: List Genres
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                - name: limit
+                  in: query
+                  type: integer
+        - name: authors
+          path: /authors
+          operations:
+            - name: listAuthors
+              method: GET
+              description: List Authors
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                - name: limit
+                  in: query
+                  type: integer
+      authentication:
+        type: none
+  exposes:
+    - type: rest
+      namespace: quote-garden-rest
+      port: 8080
+      description: REST adapter for Quote Garden — one Spectral-compliant resource per consumed operation, prefixed with /v1.
+      resources:
+        - path: /v1/quotes/random
+          name: quotes-random
+          description: REST surface for the random-quote endpoint.
+          operations:
+            - method: GET
+              name: getRandomQuote
+              description: Get Random Quote
+              call: quote-garden.getRandomQuote
+              with:
+                author: rest.author
+                genre: rest.genre
+                query: rest.query
+                count: rest.count
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/quotes
+          name: quotes
+          description: REST surface for the paginated quote-list endpoint.
+          operations:
+            - method: GET
+              name: listQuotes
+              description: List Quotes
+              call: quote-garden.listQuotes
+              with:
+                author: rest.author
+                genre: rest.genre
+                query: rest.query
+                page: rest.page
+                limit: rest.limit
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/genres
+          name: genres
+          description: REST surface for the genres endpoint.
+          operations:
+            - method: GET
+              name: listGenres
+              description: List Genres
+              call: quote-garden.listGenres
+              with:
+                page: rest.page
+                limit: rest.limit
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/authors
+          name: authors
+          description: REST surface for the authors endpoint.
+          operations:
+            - method: GET
+              name: listAuthors
+              description: List Authors
+              call: quote-garden.listAuthors
+              with:
+                page: rest.page
+                limit: rest.limit
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: quote-garden-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Quote Garden — one tool per consumed operation, routed inline through this capability's consumes block.
+      tools:
+        - name: quote-garden-get-random-quote
+          description: Get Random Quote
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: false
+          call: quote-garden.getRandomQuote
+          with:
+            author: tools.author
+            genre: tools.genre
+            query: tools.query
+            count: tools.count
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: quote-garden-list-quotes
+          description: List Quotes
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: quote-garden.listQuotes
+          with:
+            author: tools.author
+            genre: tools.genre
+            query: tools.query
+            page: tools.page
+            limit: tools.limit
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: quote-garden-list-genres
+          description: List Genres
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: quote-garden.listGenres
+          with:
+            page: tools.page
+            limit: tools.limit
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: quote-garden-list-authors
+          description: List Authors
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: quote-garden.listAuthors
+          with:
+            page: tools.page
+            limit: tools.limit
+          outputParameters:
+            - type: object
+              mapping: $.

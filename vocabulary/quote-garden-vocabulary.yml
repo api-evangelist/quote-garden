@@ -1,0 +1,137 @@
+vocabulary: 0.1.0
+info:
+  name: Quote Garden Vocabulary
+  description: >-
+    Controlled vocabulary for the Quote Garden API — the read-only domain of famous quotes,
+    their attributed authors, and the genre tags used to classify them. Captures the response
+    envelope conventions used by every endpoint as well as the underlying quote, author, and
+    genre concepts.
+  url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/vocabulary/quote-garden-vocabulary.yml
+  created: '2026-05-30'
+  modified: '2026-05-30'
+
+domain:
+  name: Quotes
+  description: Famous-quote corpus with author and genre metadata.
+
+concepts:
+  - name: Quote
+    description: A short attributed passage of text. Maps to schema:Quotation.
+    aliases: [quotation, citation, saying]
+    relatedTo: [Author, Genre]
+  - name: Author
+    description: A person to whom a quote is attributed. Maps to schema:Person.
+    aliases: [creator, originator]
+  - name: Genre
+    description: A categorical tag describing the subject or theme of a quote. Maps to schema:DefinedTerm.
+    aliases: [category, theme, topic]
+  - name: ResponseEnvelope
+    description: The common JSON envelope wrapping every Quote Garden API response.
+    aliases: [response wrapper]
+  - name: Pagination
+    description: Cursor-style page block embedded in every envelope. Null on non-paginated endpoints.
+
+terms:
+  - term: quoteText
+    type: field
+    description: The verbatim quote text.
+  - term: quoteAuthor
+    type: field
+    description: The attributed author name.
+  - term: quoteGenre
+    type: field
+    description: The classification genre tag.
+  - term: statusCode
+    type: field
+    description: Mirror of the HTTP status code in the body.
+  - term: message
+    type: field
+    description: Short human-readable label for the response payload.
+  - term: pagination
+    type: field
+    description: Pagination block (currentPage, nextPage, totalPages).
+  - term: totalQuotes
+    type: field
+    description: Total number of quotes matched by the request.
+  - term: data
+    type: field
+    description: Array of resource records (quotes, author names, or genre names).
+
+operations:
+  - name: Get Random Quote
+    method: GET
+    path: /quotes/random
+    capability: Read
+  - name: List Quotes
+    method: GET
+    path: /quotes
+    capability: Read
+  - name: List Genres
+    method: GET
+    path: /genres
+    capability: Read
+  - name: List Authors
+    method: GET
+    path: /authors
+    capability: Read
+
+capabilities:
+  - name: Read
+    description: Read-only retrieval of corpus data; no write methods are supported.
+
+tags:
+  - Quotes
+  - Authors
+  - Genres
+  - Open Source
+  - Free API
+  - REST
+
+genres:
+  description: Canonical genre tags observed in the corpus (non-exhaustive sample of the master list).
+  values:
+    - age
+    - business
+    - courage
+    - death
+    - education
+    - faith
+    - family
+    - fear
+    - freedom
+    - friendship
+    - future
+    - god
+    - government
+    - happiness
+    - health
+    - history
+    - hope
+    - humor
+    - inspirational
+    - knowledge
+    - leadership
+    - learning
+    - life
+    - love
+    - marriage
+    - money
+    - motivational
+    - nature
+    - peace
+    - politics
+    - power
+    - religion
+    - science
+    - smile
+    - society
+    - sports
+    - strength
+    - success
+    - technology
+    - time
+    - travel
+    - truth
+    - war
+    - wisdom
+    - work

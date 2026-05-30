@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-quote-schema.json",
+  "title": "Quote",
+  "description": "A single quote record as stored in the Quote Garden MongoDB collection and returned by the v3 API.",
+  "type": "object",
+  "required": ["_id", "quoteText", "quoteAuthor", "quoteGenre"],
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "MongoDB ObjectId of the quote record.",
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "quoteText": {
+      "type": "string",
+      "description": "The verbatim quote text.",
+      "minLength": 1
+    },
+    "quoteAuthor": {
+      "type": "string",
+      "description": "Attributed author of the quote."
+    },
+    "quoteGenre": {
+      "type": "string",
+      "description": "Single-genre tag classifying the quote (e.g., life, love, success, business)."
+    },
+    "__v": {
+      "type": "integer",
+      "description": "Mongoose document version key.",
+      "minimum": 0
+    }
+  }
+}

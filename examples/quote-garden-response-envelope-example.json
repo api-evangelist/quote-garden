@@ -1,0 +1,19 @@
+{
+  "statusCode": 200,
+  "message": "Quotes",
+  "pagination": {
+    "currentPage": 1,
+    "nextPage": 2,
+    "totalPages": 4
+  },
+  "totalQuotes": 4,
+  "data": [
+    {
+      "_id": "5eb17aaeb69dc744b4e72a4a",
+      "quoteText": "The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency.",
+      "quoteAuthor": "Bill Gates",
+      "quoteGenre": "business",
+      "__v": 0
+    }
+  ]
+}

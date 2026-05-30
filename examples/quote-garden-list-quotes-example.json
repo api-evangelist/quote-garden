@@ -1,0 +1,44 @@
+{
+  "operationId": "listQuotes",
+  "method": "GET",
+  "path": "/quotes",
+  "summary": "List Quotes",
+  "request": {
+    "url": "https://quote-garden.onrender.com/api/v3/quotes?author=Bill%20Gates&page=1&limit=2",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "body": {
+      "statusCode": 200,
+      "message": "Quotes",
+      "pagination": {
+        "currentPage": 1,
+        "nextPage": 2,
+        "totalPages": 4
+      },
+      "totalQuotes": 4,
+      "data": [
+        {
+          "_id": "5eb17aaeb69dc744b4e72a4a",
+          "quoteText": "The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency.",
+          "quoteAuthor": "Bill Gates",
+          "quoteGenre": "business",
+          "__v": 0
+        },
+        {
+          "_id": "5eb17aaeb69dc744b4e72a4b",
+          "quoteText": "Success is a lousy teacher. It seduces smart people into thinking they can't lose.",
+          "quoteAuthor": "Bill Gates",
+          "quoteGenre": "success",
+          "__v": 0
+        }
+      ]
+    }
+  }
+}

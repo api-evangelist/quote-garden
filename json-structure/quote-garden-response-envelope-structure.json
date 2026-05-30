@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/0.1/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-response-envelope-structure.json",
+  "title": "ResponseEnvelope",
+  "type": "object",
+  "description": "Structural layout of every Quote Garden v3 API response.",
+  "properties": {
+    "statusCode": { "type": "integer" },
+    "message":   { "type": "string" },
+    "pagination": {
+      "type": "object",
+      "properties": {
+        "currentPage": { "type": ["integer", "null"] },
+        "nextPage":    { "type": ["integer", "null"] },
+        "totalPages":  { "type": ["integer", "null"] }
+      }
+    },
+    "totalQuotes": { "type": ["integer", "null"] },
+    "data":        { "type": "array" }
+  },
+  "required": ["statusCode", "message", "pagination", "data"]
+}
