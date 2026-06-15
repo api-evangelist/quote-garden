@@ -1,0 +1,671 @@
+{
+  "item": [
+    {
+      "id": "7047f044-7420-432e-9465-3385c9f22a6f",
+      "name": "Quotes",
+      "description": {
+        "content": "Operations for retrieving quote records, individually at random or as a paginated list.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "277c65f3-8849-481c-9143-1c8de2a81e11",
+          "name": "Get Random Quote",
+          "request": {
+            "name": "Get Random Quote",
+            "description": {
+              "content": "Returns one or more randomly selected quotes, optionally filtered by author, genre,\nand/or a full-text search query. When `count` is supplied, that many random quotes\nare returned (default 1).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes",
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "author",
+                  "value": "<string>",
+                  "description": "Filter results to quotes by this exact author name."
+                },
+                {
+                  "disabled": false,
+                  "key": "genre",
+                  "value": "<string>",
+                  "description": "Filter results to quotes tagged with this genre."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Full-text search across quoteText, quoteAuthor, and quoteGenre."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "1",
+                  "description": "Number of random quotes to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8aca301-5b18-459b-b090-3594e37a0941",
+              "name": "One or more random quotes wrapped in the standard envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"message\": \"Random quotes\",\n  \"pagination\": {\n    \"currentPage\": 1,\n    \"nextPage\": null,\n    \"totalPages\": 1\n  },\n  \"totalQuotes\": 1,\n  \"data\": [\n    {\n      \"_id\": \"5eb17ab3b69dc744b4e81942\",\n      \"quoteText\": \"I think the thing we see is that as people are using video games more, they tend to watch passive TV a bit less.\",\n      \"quoteAuthor\": \"Bill Gates\",\n      \"quoteGenre\": \"time\",\n      \"__v\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24e64399-da47-4f0e-a4c6-e3784242ccbb",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 500,\n  \"message\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1269344-cec1-4b51-90ab-e8e19a20cf08",
+          "name": "List Quotes",
+          "request": {
+            "name": "List Quotes",
+            "description": {
+              "content": "Returns a paginated list of quotes, optionally filtered by author, genre, and/or a\nfull-text search query. Supports standard `page` and `limit` query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "author",
+                  "value": "<string>",
+                  "description": "Filter results to quotes by this exact author name."
+                },
+                {
+                  "disabled": false,
+                  "key": "genre",
+                  "value": "<string>",
+                  "description": "Filter results to quotes tagged with this genre."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Full-text search across quoteText, quoteAuthor, and quoteGenre."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "One-indexed page number for paginated responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f47b7da2-f366-4e94-abeb-bc0d2c51cca8",
+              "name": "A paginated list of quotes wrapped in the standard envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"message\": \"Quotes\",\n  \"pagination\": {\n    \"currentPage\": 1,\n    \"nextPage\": 2,\n    \"totalPages\": 4\n  },\n  \"totalQuotes\": 4,\n  \"data\": [\n    {\n      \"_id\": \"5eb17aaeb69dc744b4e72a4a\",\n      \"quoteText\": \"The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency.\",\n      \"quoteAuthor\": \"Bill Gates\",\n      \"quoteGenre\": \"business\",\n      \"__v\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02db6354-d980-4200-b7aa-20ce270280f8",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genre",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 500,\n  \"message\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d342ffc8-f4ce-4cad-9525-5a84c63a1c0d",
+      "name": "Authors",
+      "description": {
+        "content": "Master list of authors represented in the quote corpus.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9a8c6d0-d707-4c68-873d-3afc34d1b78e",
+          "name": "List Authors",
+          "request": {
+            "name": "List Authors",
+            "description": {
+              "content": "Returns the master list of all authors present in the corpus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "One-indexed page number for paginated responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b36a6781-64da-4f94-b1ad-c98786269a07",
+              "name": "A list of author name strings wrapped in the standard envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"message\": \"Authors\",\n  \"pagination\": {\n    \"currentPage\": null,\n    \"nextPage\": null,\n    \"totalPages\": null\n  },\n  \"totalQuotes\": null,\n  \"data\": [\n    \"Bill Gates\",\n    \"Albert Einstein\",\n    \"Mark Twain\",\n    \"Maya Angelou\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2b14739-4a62-4623-aa3c-b4842d82d254",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 500,\n  \"message\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0b73c287-76e8-4dc7-bdf0-be6e42edd5d7",
+      "name": "Genres",
+      "description": {
+        "content": "Master list of genres / categories represented in the quote corpus.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "959d0ba9-7968-41ba-bf88-342a8a9d78c2",
+          "name": "List Genres",
+          "request": {
+            "name": "List Genres",
+            "description": {
+              "content": "Returns the master list of all genres present in the corpus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "genres"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "One-indexed page number for paginated responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53f701e3-3267-4cd4-ad5f-0d0792a38f8d",
+              "name": "A list of genre name strings wrapped in the standard envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "genres"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"message\": \"Genres\",\n  \"pagination\": {\n    \"currentPage\": null,\n    \"nextPage\": null,\n    \"totalPages\": null\n  },\n  \"totalQuotes\": null,\n  \"data\": [\n    \"age\",\n    \"business\",\n    \"life\",\n    \"love\",\n    \"success\",\n    \"time\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0509c4e-0397-4fda-98c6-40cc9294ff58",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "genres"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 500,\n  \"message\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://quote-garden.onrender.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0f1e6f5d-2fd6-4939-ab9f-67e02f999e2b",
+    "name": "Quote Garden API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quote Garden is a free, open-source REST API serving a curated database of 75,000+\nfamous quotes. The v3 API is read-only, requires no authentication, and exposes four\nresource endpoints: random quotes, paginated quote listings, the master genre list,\nand the master author list.\n\nAll responses share the same envelope:\n\n```json\n{\n  \"statusCode\": 200,\n  \"message\": \"Quotes\",\n  \"pagination\": { \"currentPage\": 1, \"nextPage\": 2, \"totalPages\": 4 },\n  \"totalQuotes\": 4,\n  \"data\": [ /* resource objects or strings */ ]\n}\n```\n\nThe canonical reference deployment is hosted on Render. The project is MIT-licensed\nand self-hostable from the GitHub source (Node.js + Express + MongoDB).\n\n\nContact Support:\n Name: Prathamesh More",
+      "type": "text/plain"
+    }
+  }
+}

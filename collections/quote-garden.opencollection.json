@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Quote Garden API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Random Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://quote-garden.onrender.com/api/v3/quotes/random",
+            "params": [
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to quotes by this exact author name."
+              },
+              {
+                "name": "genre",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to quotes tagged with this genre."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search across quoteText, quoteAuthor, and quoteGenre."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of random quotes to return."
+              }
+            ]
+          },
+          "docs": "Returns one or more randomly selected quotes, optionally filtered by author, genre,\nand/or a full-text search query. When `count` is supplied, that many random quotes\nare returned (default 1).\n"
+        },
+        {
+          "info": {
+            "name": "List Quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://quote-garden.onrender.com/api/v3/quotes",
+            "params": [
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to quotes by this exact author name."
+              },
+              {
+                "name": "genre",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to quotes tagged with this genre."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search across quoteText, quoteAuthor, and quoteGenre."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "One-indexed page number for paginated responses."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of quotes, optionally filtered by author, genre, and/or a\nfull-text search query. Supports standard `page` and `limit` query parameters.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Genres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://quote-garden.onrender.com/api/v3/genres",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "One-indexed page number for paginated responses."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page."
+              }
+            ]
+          },
+          "docs": "Returns the master list of all genres present in the corpus."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Authors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://quote-garden.onrender.com/api/v3/authors",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "One-indexed page number for paginated responses."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return per page."
+              }
+            ]
+          },
+          "docs": "Returns the master list of all authors present in the corpus."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
