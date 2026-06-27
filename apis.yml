@@ -72,34 +72,34 @@ apis:
       - type: JSONLD
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-ld/quote-garden-context.jsonld
-      - type: Example
+      - type: Examples
         title: Get Random Quote Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-get-random-quote-example.json
-      - type: Example
+      - type: Examples
         title: List Quotes Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-quotes-example.json
-      - type: Example
+      - type: Examples
         title: List Genres Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-genres-example.json
-      - type: Example
+      - type: Examples
         title: List Authors Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-authors-example.json
-      - type: Example
+      - type: Examples
         title: Quote Resource Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-quote-example.json
-      - type: Example
+      - type: Examples
         title: Response Envelope Example
         url: >-
           https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-response-envelope-example.json
-      - type: SDK
+      - type: SDKs
         title: QuoteGarden NPM Wrapper
         url: https://github.com/pprathameshmore/QuoteGardenNPM
-      - type: SDK
+      - type: SDKs
         title: npm Package
         url: https://www.npmjs.com/package/quotegarden
 maintainers:
