@@ -106,6 +106,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: DomainSecurity
+    url: security/quote-garden-domain-security.yml
   - type: Website
     url: https://pprathameshmore.github.io/QuoteGarden/
   - type: Portal

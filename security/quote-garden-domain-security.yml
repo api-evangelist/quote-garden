@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: quote-garden.onrender.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 22:01:50 2026 GMT
+  hsts: null
+- host: quote-garden.herokuapp.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Jan 29 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: onrender.com
+  dnssec: false
+  caa:
+  - 0 issue "digicert.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issuewild "digicert.com"
+  - 0 issuewild "letsencrypt.org"
+  - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+  spf: false
+  dmarc: true
+  dmarc_policy: none
+- domain: herokuapp.com
+  dnssec: true
+  caa: []
+  spf: false
+  dmarc: false
