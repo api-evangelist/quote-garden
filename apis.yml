@@ -106,6 +106,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/quote-garden-agentic-access.yml
   - type: DomainSecurity
     url: security/quote-garden-domain-security.yml
   - type: Website
