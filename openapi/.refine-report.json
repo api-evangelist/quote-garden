@@ -1,0 +1,18 @@
+{
+  "provider": "quote-garden",
+  "sources": [
+    "quote-garden-authors-api-openapi.yml",
+    "quote-garden-genres-api-openapi.yml",
+    "quote-garden-quotes-api-openapi.yml"
+  ],
+  "outputs": [
+    "quote-garden-authors-api-openapi.yml",
+    "quote-garden-genres-api-openapi.yml",
+    "quote-garden-quotes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
