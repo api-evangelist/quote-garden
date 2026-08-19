@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "bd1a09dd-7121-4b16-80d7-5eeff96a591e",
+      "name": "Authors",
+      "description": {
+        "content": "Master list of authors represented in the quote corpus.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cfa803f2-e3f5-4a81-8e1d-c764737c8ab3",
+          "name": "List Authors",
+          "request": {
+            "name": "List Authors",
+            "description": {
+              "content": "Returns the master list of all authors present in the corpus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "One-indexed page number for paginated responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b5badf5-fe51-482c-a96d-4e5c477f0b6d",
+              "name": "A list of author name strings wrapped in the standard envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 200,\n  \"message\": \"Authors\",\n  \"pagination\": {\n    \"currentPage\": null,\n    \"nextPage\": null,\n    \"totalPages\": null\n  },\n  \"totalQuotes\": null,\n  \"data\": [\n    \"Bill Gates\",\n    \"Albert Einstein\",\n    \"Mark Twain\",\n    \"Maya Angelou\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1046a393-ce8b-48b9-8f4e-50c03403f334",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 500,\n  \"message\": \"Internal Server Error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://quote-garden.onrender.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a38a427b-61f7-4912-bd7e-a6ec89f90147",
+    "name": "Quote Garden Authors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Quote Garden is a free, open-source REST API serving a curated database of 75,000+\nfamous quotes. The v3 API is read-only, requires no authentication, and exposes four\nresource endpoints: random quotes, paginated quote listings, the master genre list,\nand the master author list.\n\nAll responses share the same envelope:\n\n```json\n{\n  \"statusCode\": 200,\n  \"message\": \"Quotes\",\n  \"pagination\": { \"currentPage\": 1, \"nextPage\": 2, \"totalPages\": 4 },\n  \"totalQuotes\": 4,\n  \"data\": [ /* resource objects or strings */ ]\n}\n```\n\nThe canonical reference deployment is hosted on Render. The project is MIT-licensed\nand self-hostable from the GitHub source (Node.js + Express + MongoDB).\n\n\nContact Support:\n Name: Prathamesh More",
+      "type": "text/plain"
+    }
+  }
+}
