@@ -36,7 +36,7 @@ tags:
 created: '2026-05-28'
 modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/apis.yml
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 x-source: public-apis/public-apis
 x-category: Personality
 x-type: opensource
