@@ -9,6 +9,18 @@ description: >-
   project also ships an official npm client wrapper (`@pprathameshmore/quotegardennpm`) and is widely embedded in
   third-party chrome extensions, mobile apps, and Twitter bots that need a lightweight inspirational-quote source.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
@@ -210,6 +222,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: IssueTracker
+    url: https://github.com/pprathameshmore/QuoteGarden/issues
   - type: AgenticAccess
     url: agentic-access/quote-garden-agentic-access.yml
   - type: DomainSecurity
