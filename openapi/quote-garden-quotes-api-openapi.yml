@@ -85,6 +85,146 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return per page.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      description: One-indexed page number for paginated responses.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    AuthorFilter:
+      name: author
+      in: query
+      description: Filter results to quotes by this exact author name.
+      required: false
+      schema:
+        type: string
+    GenreFilter:
+      name: genre
+      in: query
+      description: Filter results to quotes tagged with this genre.
+      required: false
+      schema:
+        type: string
+    QueryFilter:
+      name: query
+      in: query
+      description: Full-text search across quoteText, quoteAuthor, and quoteGenre.
+      required: false
+      schema:
+        type: string
+  responses:
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Pagination:
+      type: object
+      description: Pagination block returned on every response.
+      properties:
+        currentPage:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        nextPage:
+          type:
+          - integer
+          - 'null'
+          example: 2
+        totalPages:
+          type:
+          - integer
+          - 'null'
+          example: 4
+    QuotesResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Quote'
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Internal Server Error
+    ResponseEnvelope:
+      type: object
+      description: Common response envelope shared by all endpoints.
+      required:
+      - statusCode
+      - message
+      - pagination
+      - data
+      properties:
+        statusCode:
+          type: integer
+          example: 200
+        message:
+          type: string
+          example: Quotes
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        totalQuotes:
+          type:
+          - integer
+          - 'null'
+          example: 4
+        data:
+          type: array
+          items: {}
+    Quote:
+      type: object
+      description: A single quote record stored in the Quote Garden MongoDB collection.
+      required:
+      - _id
+      - quoteText
+      - quoteAuthor
+      - quoteGenre
+      properties:
+        _id:
+          type: string
+          description: MongoDB ObjectId of the quote.
+          example: 5eb17ab3b69dc744b4e81942
+        quoteText:
+          type: string
+          description: The verbatim quote text.
+          example: I think the thing we see is that as people are using video games more, they tend to watch passive TV a bit less.
+        quoteAuthor:
+          type: string
+          description: Name of the person to whom the quote is attributed.
+          example: Bill Gates
+        quoteGenre:
+          type: string
+          description: Single genre tag classifying the quote.
+          example: time
+        __v:
+          type: integer
+          description: Mongoose document version key.
+          example: 0
   examples:
     RandomQuoteResponse:
       summary: Single random quote
@@ -118,146 +258,6 @@ components:
           quoteAuthor: Bill Gates
           quoteGenre: business
           __v: 0
-  schemas:
-    ResponseEnvelope:
-      type: object
-      description: Common response envelope shared by all endpoints.
-      required:
-      - statusCode
-      - message
-      - pagination
-      - data
-      properties:
-        statusCode:
-          type: integer
-          example: 200
-        message:
-          type: string
-          example: Quotes
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        totalQuotes:
-          type:
-          - integer
-          - 'null'
-          example: 4
-        data:
-          type: array
-          items: {}
-    QuotesResponse:
-      allOf:
-      - $ref: '#/components/schemas/ResponseEnvelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Quote'
-    Pagination:
-      type: object
-      description: Pagination block returned on every response.
-      properties:
-        currentPage:
-          type:
-          - integer
-          - 'null'
-          example: 1
-        nextPage:
-          type:
-          - integer
-          - 'null'
-          example: 2
-        totalPages:
-          type:
-          - integer
-          - 'null'
-          example: 4
-    Quote:
-      type: object
-      description: A single quote record stored in the Quote Garden MongoDB collection.
-      required:
-      - _id
-      - quoteText
-      - quoteAuthor
-      - quoteGenre
-      properties:
-        _id:
-          type: string
-          description: MongoDB ObjectId of the quote.
-          example: 5eb17ab3b69dc744b4e81942
-        quoteText:
-          type: string
-          description: The verbatim quote text.
-          example: I think the thing we see is that as people are using video games more, they tend to watch passive TV a bit less.
-        quoteAuthor:
-          type: string
-          description: Name of the person to whom the quote is attributed.
-          example: Bill Gates
-        quoteGenre:
-          type: string
-          description: Single genre tag classifying the quote.
-          example: time
-        __v:
-          type: integer
-          description: Mongoose document version key.
-          example: 0
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          example: 500
-        message:
-          type: string
-          example: Internal Server Error
-  responses:
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    AuthorFilter:
-      name: author
-      in: query
-      description: Filter results to quotes by this exact author name.
-      required: false
-      schema:
-        type: string
-    GenreFilter:
-      name: genre
-      in: query
-      description: Filter results to quotes tagged with this genre.
-      required: false
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return per page.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Page:
-      name: page
-      in: query
-      description: One-indexed page number for paginated responses.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    QueryFilter:
-      name: query
-      in: query
-      description: Full-text search across quoteText, quoteAuthor, and quoteGenre.
-      required: false
-      schema:
-        type: string
 externalDocs:
   description: GitHub README and API documentation
   url: https://github.com/pprathameshmore/QuoteGarden#api-documentation

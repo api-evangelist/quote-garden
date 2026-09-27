@@ -44,32 +44,34 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return per page.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      description: One-indexed page number for paginated responses.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  responses:
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ResponseEnvelope:
-      type: object
-      description: Common response envelope shared by all endpoints.
-      required:
-      - statusCode
-      - message
-      - pagination
-      - data
-      properties:
-        statusCode:
-          type: integer
-          example: 200
-        message:
-          type: string
-          example: Quotes
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        totalQuotes:
-          type:
-          - integer
-          - 'null'
-          example: 4
-        data:
-          type: array
-          items: {}
     Pagination:
       type: object
       description: Pagination block returned on every response.
@@ -107,33 +109,31 @@ components:
         message:
           type: string
           example: Internal Server Error
-  responses:
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return per page.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Page:
-      name: page
-      in: query
-      description: One-indexed page number for paginated responses.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
+    ResponseEnvelope:
+      type: object
+      description: Common response envelope shared by all endpoints.
+      required:
+      - statusCode
+      - message
+      - pagination
+      - data
+      properties:
+        statusCode:
+          type: integer
+          example: 200
+        message:
+          type: string
+          example: Quotes
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        totalQuotes:
+          type:
+          - integer
+          - 'null'
+          example: 4
+        data:
+          type: array
+          items: {}
   examples:
     GenresResponse:
       summary: All genres

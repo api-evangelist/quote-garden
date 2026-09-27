@@ -11,6 +11,10 @@ description: >-
 type: Index
 deliveryModel:
   model: unknown
+  license_evidence:
+    repo: pprathameshmore/quotegarden
+    spdx: none
+    stars: 43
   open_source: unknown
   commercial: false
   callable_host: true
@@ -19,7 +23,7 @@ deliveryModel:
   source:
   - openapi
   - repository-unlicensed
-  generated: '2026-08-28'
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -38,7 +42,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/quote-gard
 tags:
   - Quotes
   - Inspiration
-  - Open-Source
+  - Open Source
   - Free API
   - Node.js
   - MongoDB
@@ -55,6 +59,7 @@ tags_raw:
   - Express
   - Personality
   - Public APIs
+  - Open-Source
 created: '2026-05-28'
 modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/apis.yml
