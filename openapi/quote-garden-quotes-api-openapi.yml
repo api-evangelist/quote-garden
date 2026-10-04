@@ -86,29 +86,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: One-indexed page number for paginated responses.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    GenreFilter:
-      name: genre
-      in: query
-      description: Filter results to quotes tagged with this genre.
-      required: false
-      schema:
-        type: string
-    AuthorFilter:
-      name: author
-      in: query
-      description: Filter results to quotes by this exact author name.
-      required: false
-      schema:
-        type: string
     Limit:
       name: limit
       in: query
@@ -126,7 +103,49 @@ components:
       required: false
       schema:
         type: string
+    AuthorFilter:
+      name: author
+      in: query
+      description: Filter results to quotes by this exact author name.
+      required: false
+      schema:
+        type: string
+    GenreFilter:
+      name: genre
+      in: query
+      description: Filter results to quotes tagged with this genre.
+      required: false
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: One-indexed page number for paginated responses.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
+    Pagination:
+      type: object
+      description: Pagination block returned on every response.
+      properties:
+        currentPage:
+          type:
+          - integer
+          - 'null'
+          example: 1
+        nextPage:
+          type:
+          - integer
+          - 'null'
+          example: 2
+        totalPages:
+          type:
+          - integer
+          - 'null'
+          example: 4
     QuotesResponse:
       allOf:
       - $ref: '#/components/schemas/ResponseEnvelope'
@@ -136,6 +155,15 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Quote'
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Internal Server Error
     ResponseEnvelope:
       type: object
       description: Common response envelope shared by all endpoints.
@@ -161,25 +189,6 @@ components:
         data:
           type: array
           items: {}
-    Pagination:
-      type: object
-      description: Pagination block returned on every response.
-      properties:
-        currentPage:
-          type:
-          - integer
-          - 'null'
-          example: 1
-        nextPage:
-          type:
-          - integer
-          - 'null'
-          example: 2
-        totalPages:
-          type:
-          - integer
-          - 'null'
-          example: 4
     Quote:
       type: object
       description: A single quote record stored in the Quote Garden MongoDB collection.
@@ -209,15 +218,13 @@ components:
           type: integer
           description: Mongoose document version key.
           example: 0
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          example: 500
-        message:
-          type: string
-          example: Internal Server Error
+  responses:
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   examples:
     ListQuotesResponse:
       summary: Paginated quote list
@@ -251,13 +258,6 @@ components:
           quoteAuthor: Bill Gates
           quoteGenre: time
           __v: 0
-  responses:
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
 externalDocs:
   description: GitHub README and API documentation
   url: https://github.com/pprathameshmore/QuoteGarden#api-documentation

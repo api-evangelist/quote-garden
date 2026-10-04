@@ -45,15 +45,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: One-indexed page number for paginated responses.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     Limit:
       name: limit
       in: query
@@ -64,7 +55,34 @@ components:
         minimum: 1
         maximum: 100
         default: 10
+    Page:
+      name: page
+      in: query
+      description: One-indexed page number for paginated responses.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
+    StringListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: string
+    Error:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          example: 500
+        message:
+          type: string
+          example: Internal Server Error
     ResponseEnvelope:
       type: object
       description: Common response envelope shared by all endpoints.
@@ -109,24 +127,6 @@ components:
           - integer
           - 'null'
           example: 4
-    StringListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ResponseEnvelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              type: string
-    Error:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          example: 500
-        message:
-          type: string
-          example: Internal Server Error
   examples:
     AuthorsResponse:
       summary: All authors
