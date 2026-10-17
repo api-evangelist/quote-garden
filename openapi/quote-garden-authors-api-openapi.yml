@@ -44,7 +44,23 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  responses:
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    Page:
+      name: page
+      in: query
+      description: One-indexed page number for paginated responses.
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     Limit:
       name: limit
       in: query
@@ -55,25 +71,23 @@ components:
         minimum: 1
         maximum: 100
         default: 10
-    Page:
-      name: page
-      in: query
-      description: One-indexed page number for paginated responses.
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
+  examples:
+    AuthorsResponse:
+      summary: All authors
+      value:
+        statusCode: 200
+        message: Authors
+        pagination:
+          currentPage: null
+          nextPage: null
+          totalPages: null
+        totalQuotes: null
+        data:
+        - Bill Gates
+        - Albert Einstein
+        - Mark Twain
+        - Maya Angelou
   schemas:
-    StringListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ResponseEnvelope'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              type: string
     Error:
       type: object
       properties:
@@ -127,29 +141,15 @@ components:
           - integer
           - 'null'
           example: 4
-  examples:
-    AuthorsResponse:
-      summary: All authors
-      value:
-        statusCode: 200
-        message: Authors
-        pagination:
-          currentPage: null
-          nextPage: null
-          totalPages: null
-        totalQuotes: null
-        data:
-        - Bill Gates
-        - Albert Einstein
-        - Mark Twain
-        - Maya Angelou
-  responses:
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    StringListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              type: string
 externalDocs:
   description: GitHub README and API documentation
   url: https://github.com/pprathameshmore/QuoteGarden#api-documentation
