@@ -1,4 +1,4 @@
-# Quote Garden (quote-garden)
+# Quote Garden
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,85 +66,143 @@
 
 Quote Garden is a free, open-source REST API that serves more than 75,000 famous quotes. Built by Prathamesh More (pprathameshmore) in Node.js + Express + MongoDB, it exposes a small read-only HTTP surface for fetching random quotes, paginated quote lists filterable by author, genre, and full-text query, plus master lists of all authors and genres. There is no authentication and no cost to use; the canonical reference implementation is hosted on Render at https://quote-garden.onrender.com/api/v3 and was previously deployed on Heroku at quote-garden.herokuapp.com. The project also ships an official npm client wrapper (`@pprathameshmore/quotegardennpm`) and is widely embedded in third-party chrome extensions, mobile apps, and Twitter bots that need a lightweight inspirational-quote source.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/apis.yml)
+**Areas:** Quotes · Inspiration · Open Source · Free API · Node.js · MongoDB · Express · Personality · Public APIs
 
-## Scope
+## Quote Garden on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Quote Garden is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/quote-garden/](https://apis.io/providers/quote-garden/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Quotes
-- Inspiration
-- Open Source
-- Free API
-- Node.js
-- MongoDB
-- Express
-- Personality
-- Public APIs
+- [Quote Garden Authors API](https://apis.io/apis/quote-garden/quote-garden-authors-api/) — Master list of authors represented in the quote corpus.
+- [Quote Garden Genres API](https://apis.io/apis/quote-garden/quote-garden-genres-api/) — Master list of genres / categories represented in the quote corpus.
+- [Quote Garden Quotes API](https://apis.io/apis/quote-garden/quote-garden-quotes-api/) — Operations for retrieving quote records, individually at random or as a paginated list.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Quote Garden REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Read-only REST API exposing a database of 75,000+ famous quotes. Returns JSON with a consistent envelope (statusCode, message, pagination, totalQuotes, data). Supports filtering by author, genre, and full-text query, plus pagination via page/limit query parameters. The v3 API is the only supported version; older versions (v1/v2) are deprecated.
+- [Quote Garden Agentic Access](https://apis.io/agentic-access/quote-garden/quote-garden-agentic-access/)
 
-- **Human URL:** [https://pprathameshmore.github.io/QuoteGarden/](https://pprathameshmore.github.io/QuoteGarden/)
-- **Base URL:** `https://quote-garden.onrender.com/api/v3`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Quotes
-- REST
-- Open Source
-- Free API
+- [Quote](https://apis.io/schemas/quote-garden/quote-garden-quote/)
+- [ResponseEnvelope](https://apis.io/schemas/quote-garden/quote-garden-response-envelope/)
 
-#### Properties
+#### JSON Structure (2)
 
-- [Documentation](https://github.com/pprathameshmore/QuoteGarden#readme)
-- [API Reference](https://github.com/pprathameshmore/QuoteGarden#api-documentation)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/openapi/quote-garden-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-quote-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-schema/quote-garden-response-envelope-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-quote-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-structure/quote-garden-response-envelope-structure.json)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/json-ld/quote-garden-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-get-random-quote-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-quotes-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-genres-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-list-authors-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-quote-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/examples/quote-garden-response-envelope-example.json)
-- [SDK](https://github.com/pprathameshmore/QuoteGardenNPM)
-- [SDK](https://www.npmjs.com/package/quotegarden)
-- [Postman Collection](collections/quote-garden.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/quote-garden.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Quote Garden Quote Structure](https://apis.io/json-structure/quote-garden/quote-garden-quote-structure/)
+- [Quote Garden Response Envelope Structure](https://apis.io/json-structure/quote-garden/quote-garden-response-envelope-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Quote Garden Context](https://apis.io/jsonld/quote-garden/quote-garden-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Quote Garden Vocabulary](https://apis.io/vocabularies/quote-garden/quote-garden-vocabulary/)
+
+#### Examples (6)
+
+Example requests and responses.
+
+- [Quote Garden Get Random Quote Example](https://apis.io/examples/quote-garden/quote-garden-get-random-quote-example/)
+- [Quote Garden List Authors Example](https://apis.io/examples/quote-garden/quote-garden-list-authors-example/)
+- [Quote Garden List Genres Example](https://apis.io/examples/quote-garden/quote-garden-list-genres-example/)
+- [Quote Garden List Quotes Example](https://apis.io/examples/quote-garden/quote-garden-list-quotes-example/)
+- [Quote Garden Quote Example](https://apis.io/examples/quote-garden/quote-garden-quote-example/)
+- [Quote Garden Response Envelope Example](https://apis.io/examples/quote-garden/quote-garden-response-envelope-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Quote Garden API](https://apis.io/collections/quote-garden/open-quote-garden/)
+- [Quote Garden Authors API](https://apis.io/collections/quote-garden/open-quote-garden-authors-api/)
+- [Quote Garden Authors Genres API](https://apis.io/collections/quote-garden/open-quote-garden-genres-api/)
+- [Quote Garden Authors Quotes API](https://apis.io/collections/quote-garden/open-quote-garden-quotes-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Quote Garden — jsonschema rules](https://apis.io/rules/quote-garden/quote-garden-jsonschema-spectral-rules/)
+- [Quote Garden API Rules](https://apis.io/rules/quote-garden/quote-garden-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Quote Garden Domain Security](https://apis.io/security/quote-garden/quote-garden-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://pprathameshmore.github.io/QuoteGarden/)
-- [Portal](https://pprathameshmore.github.io/QuoteGarden/)
-- [GitHub Repository](https://github.com/pprathameshmore/QuoteGarden)
-- [GitHub Organization](https://github.com/pprathameshmore)
-- [Source Code](https://github.com/pprathameshmore/QuoteGarden)
-- [License](https://opensource.org/licenses/MIT)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/rules/quote-garden-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/quote-garden/refs/heads/main/vocabulary/quote-garden-vocabulary.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [GitHub](https://github.com/pprathameshmore)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 60.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 0.0 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/quote-garden/](https://apis.io/providers/quote-garden/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Quote Garden: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/quote-garden/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
